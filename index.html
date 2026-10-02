@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة المنشورات والتعليقات</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- شاشة اختيار نوع الدخول -->
+        <div id="login-selection" class="card">
+            <h2>اختر طريقة الدخول</h2>
+            <button onclick="showAdminForm()" class="btn btn-admin">دخول الأدمن (المشرف)</button>
+            <button onclick="showGuestForm()" class="btn btn-guest">دخول كضيف</button>
+        </div>
+
+        <!-- نموذج تسجيل دخول الأدمن -->
+        <div id="admin-form" class="card hidden">
+            <h3>تسجيل دخول الأدمن</h3>
+            <input type="text" id="admin-user" placeholder="اسم المستخدم">
+            <input type="password" id="admin-pass" placeholder="كلمة السر">
+            <button onclick="loginAdmin()" class="btn btn-primary">دخول</button>
+            <button onclick="goBack()" class="btn btn-secondary">إلغاء</button>
+        </div>
+
+        <!-- نموذج دخول الضيف -->
+        <div id="guest-form" class="card hidden">
+            <h3>دخول الضيف</h3>
+            <input type="text" id="guest-name" placeholder="أدخل اسمك">
+            <button onclick="loginGuest()" class="btn btn-primary">دخول</button>
+            <button onclick="goBack()" class="btn btn-secondary">إلغاء</button>
+        </div>
+
+        <!-- الواجهة الرئيسية للموقع بعد الدخول -->
+        <div id="main-content" class="card hidden">
+            <div class="header">
+                <h2>أهلاً بك، <span id="user-display-name"></span>! <small id="user-role"></small></h2>
+                <button onclick="logout()" class="btn btn-logout">تسجيل الخروج</button>
+            </div>
+
+            <!-- قسم إضافة منشور (خاص بالأدمن فقط) -->
+            <div id="post-creation-area" class="hidden">
+                <h3>إضافة منشور جديد</h3>
+                <textarea id="post-text" placeholder="اكتب نص المنشور هنا..."></textarea>
+                
+                <label for="post-image" class="file-label">إضافة صورة (اختياري):</label>
+                <input type="file" id="post-image" accept="image/*">
+
+                <button onclick="addPost()" class="btn btn-primary">نشر المنشور</button>
+            </div>
+
+            <hr>
+
+            <!-- قسم عرض المنشورات -->
+            <h3>المنشورات</h3>
+            <div id="posts-container">
+                <!-- يتم تحميل المنشورات هنا تلقائياً -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
